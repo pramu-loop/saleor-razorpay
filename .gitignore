@@ -1,0 +1,50 @@
+# Environment variables
+.env
+
+# Python bytecode and cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+env/
+venv/
+.venv/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/```
+
+#### 3. Add the `.env.example` File (User Guide)
+
+This file acts as a template for users (including your future self) to know exactly which environment variables are needed to run the app.
+
+**Filename:** `.env.example`
+**Content:**
+```ini
+# .env.example
+# This is a template. Copy it to a file named '.env' for local development
+# or provide these variables to your deployment environment.
+
+# --- Razorpay ---
+# Get these from your Razorpay Dashboard
+RAZORPAY_WEBHOOK_SECRET="whsec_your_webhook_secret"
+RAZORPAY_KEY_ID="rzp_test_or_live_your_key_id"
+RAZORPAY_KEY_SECRET="your_key_secret"
+
+# --- Saleor ---
+# The public GraphQL endpoint of your Saleor instance
+SALEOR_API_URL="https://api.your-domain.com/graphql/"
+# Generate this token from your Saleor Dashboard > Apps > Create Token
+SALEOR_APP_TOKEN="your_saleor_app_token"
+
+# --- DB (Handled by docker-compose) ---
+DATABASE_URL="postgresql+psycopg2://razorpay:razorpay@db:5432/razorpay_webhook"
+
+# --- App ---
+# The public hostname for this app itself (e.g., razorpay.your-domain.com)
+APP_HOSTNAME="razorpay.your-domain.com"
+WEBHOOK_PATH="/webhooks/razorpay"
+LOG_LEVEL=INFO
